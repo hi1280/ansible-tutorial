@@ -1,0 +1,22 @@
+---
+- name: Playbook Tutorial
+  hosts: all
+  become: true
+  tasks:
+  - name: libselinux-python install
+    yum:
+      name: libselinux-python
+      state: present
+  - name: epel repository install
+    yum:
+      name: epel-release
+      state: present
+  - name: nginx install
+    yum:
+      name: nginx
+      state: present
+  - name: nginx start
+    service:
+      name: nginx
+      state: started
+      enabled: true
